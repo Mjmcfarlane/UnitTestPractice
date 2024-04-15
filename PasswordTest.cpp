@@ -14,9 +14,41 @@ class PracticeTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor)
 };
 
-TEST(PasswordTest, single_letter_password)
+
+TEST (PasswordTest, single_letter_password)
 {
 	Password my_password;
 	int actual = my_password.count_leading_characters("Z");
 	ASSERT_EQ(1, actual);
 }
+
+TEST (PasswordTest, double_letter_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("ZZ");
+	ASSERT_EQ(2, actual);
+}
+
+TEST (PasswordTest, space_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("   ");
+	ASSERT_EQ(3, actual);
+}
+
+
+TEST (PasswordTest, empty_password)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("");
+	ASSERT_EQ(0, actual);
+}
+
+/*
+TEST (PasswordTest, no_upper_and_lower_password){
+	Password my_password;
+	bool both_cases = my_password.has_mixed_case("zZ");
+	ASSERT_EQ(true, both_cases);
+}
+*/
+
